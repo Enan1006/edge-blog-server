@@ -25,6 +25,20 @@ async function run() {
             res.send(result)
         });
 
+        app.post('/posts', async (req, res) => {
+            const data = req.body;
+            const doc = {
+                title: data.title,
+                description: data.description,
+                image: data.image,
+                user: data.user,
+                email: data.email,
+                category: data.category
+            };
+            const result = await blogCollection.insertOne(doc);
+            res.send(result)
+        });
+
 
 
 
