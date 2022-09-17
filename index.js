@@ -56,6 +56,37 @@ async function run() {
             res.send(result)
         })
 
+        //delete blog
+        // app.delete('/posts/:id', async (req, res) => {
+        //     const id = req.params.id;
+        //     const filter = { _id: ObjectId(id) };
+        //     const result = await blogCollection.deleteOne(filter);
+        //     if (result.deletedCount === 1) {
+        //         console.log('Post has deleted with id', id);
+        //     }
+        //     else {
+        //         console.log('Post has already deleted');
+        //     }
+        //     res.send(result)
+        // })
+
+        //filter by category
+        app.get('/categories', async (req, res) => {
+            const category = req.query.category;
+            console.log(category);
+            const query = { category: category };
+            const cursor = blogCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
+        app.get('/categories/:categoryId', async (req, res) => {
+            const category = req.params.categoryId;
+            console.log(category);
+            const query = { category: category };
+            const cursor = blogCollection.find(query);
+            const result = await cursor.toArray();
+            res.send(result)
+        })
 
     }
     finally { }
