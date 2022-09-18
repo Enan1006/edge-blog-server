@@ -71,14 +71,14 @@ async function run() {
         // })
 
         //filter by category
-        app.get('/categories', async (req, res) => {
-            const category = req.query.category;
-            console.log(category);
-            const query = { category: category };
-            const cursor = blogCollection.find(query);
-            const result = await cursor.toArray();
-            res.send(result)
-        })
+        // app.get('/categories', async (req, res) => {
+        //     const category = req.query.category;
+        //     console.log(category);
+        //     const query = { category: category };
+        //     const cursor = blogCollection.find(query);
+        //     const result = await cursor.toArray();
+        //     res.send(result)
+        // })
         app.get('/categories/:categoryId', async (req, res) => {
             const category = req.params.categoryId;
             console.log(category);
